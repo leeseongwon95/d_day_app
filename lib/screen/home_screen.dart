@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),),
               Text('2022 08 08', style: TextStyle(
                 fontFamily: 'sunflower',
-                fontSize: 20
+                fontSize: 30
               ),),
               IconButton(
                   iconSize: 50,
