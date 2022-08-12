@@ -13,6 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.lightGreen[50],
       body: SafeArea(
+        bottom: false,
         child: Container(
           width: MediaQuery.of(context).size.width,
           child: Column(
@@ -34,6 +35,7 @@ class _TopPart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text('Start', style: TextStyle(
               color: Colors.lightGreen,
@@ -67,6 +69,10 @@ class _BottomPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Icon(Icons.star, size: 30,color: Colors.red,);
+    return Container(
+      height: 350,
+      width: MediaQuery.of(context).size.width,
+      color: Colors.red,
+    );
   }
 }
