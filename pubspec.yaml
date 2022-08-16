@@ -60,7 +60,7 @@ flutter:
   assets:
     - asset/
   fonts:
-    - family: pasisienne
+    - family: parisienne
       fonts:
         - asset: asset/font/Parisienne-Regular.ttf
 
