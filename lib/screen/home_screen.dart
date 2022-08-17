@@ -122,18 +122,37 @@ class _BottomPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 350,
+    return Container(
+      color: Colors.red,
+      height: 340,
       width: double.infinity,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          CircleAvatar(
-            radius: 50,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CircleAvatar(
+                  radius: 50,
+                  child: Icon(Icons.star),
+                ),
+                ElevatedButton(
+                    onPressed: (){}, 
+                    child: Text('추가'))
+              ],
+            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CircleAvatar(
+                radius: 50,
+                child: Icon(Icons.star),
+              ),
+              ElevatedButton(
+                  onPressed: (){},
+                  child: Text('추가'))
+            ],
           ),
-          CircleAvatar(
-            radius: 50,
-          )
         ],
       ),
     );
