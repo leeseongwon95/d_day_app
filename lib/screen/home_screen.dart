@@ -123,7 +123,6 @@ class _BottomPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
       height: 340,
       width: double.infinity,
       child: Row(
