@@ -36,39 +36,37 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-  void onHeartPressed(){
+
+  void onHeartPressed() {
     final DateTime now = DateTime.now();
-      showCupertinoDialog(
-          context: context,
-          barrierDismissible: true,
-          builder: (BuildContext context){
-            return Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                color: Colors.white,
-                height: 300.0,
-                child: CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.date,
-                  initialDateTime: selectedDate,
-                  maximumDate: DateTime(
-                    now.year,
-                    now.month,
-                    now.day,
-                  ),
-                  onDateTimeChanged: (DateTime date){
-                    setState((){
-                      selectedDate = date;
-                    });
-                  },
+    showCupertinoDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              color: Colors.white,
+              height: 300.0,
+              child: CupertinoDatePicker(
+                mode: CupertinoDatePickerMode.date,
+                initialDateTime: selectedDate,
+                maximumDate: DateTime(
+                  now.year,
+                  now.month,
+                  now.day,
                 ),
+                onDateTimeChanged: (DateTime date) {
+                  setState(() {
+                    selectedDate = date;
+                  });
+                },
               ),
-            );
-          }
-      );
+            ),
+          );
+        });
   }
 }
-
-
 
 class _TopPart extends StatelessWidget {
   final DateTime selectedDate;
@@ -78,28 +76,26 @@ class _TopPart extends StatelessWidget {
     required this.selectedDate,
     required this.onPressed,
     Key? key,
-  }): super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
     final now = DateTime.now();
-    
-    
+
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('Date', style: TextStyle(
-              color: Colors.lightGreen,
-              fontFamily: 'parisienne',
-              fontSize: 80
-          ),),
+          Text(
+            'Date',
+            style: textTheme.headline1,
+          ),
           Text(
             '${selectedDate.year}.${selectedDate.month}.${selectedDate.day}',
-            style: TextStyle(
-              fontFamily: 'sunflower',
-              fontSize: 30
-          ),),
+            style: textTheme.headline2,
+          ),
           IconButton(
               iconSize: 50,
               onPressed: onPressed,
@@ -108,18 +104,13 @@ class _TopPart extends StatelessWidget {
                 color: Colors.pinkAccent,
               )),
           Text(
-            'D+${
-                DateTime(
+            'D+${DateTime(
                   now.year,
                   now.month,
                   now.day,
-                ).difference(selectedDate).inDays + 1
-            }',
-            style: TextStyle(
-              fontFamily: 'sunflower',
-              fontWeight: FontWeight.w700,
-              fontSize: 60,
-          ),)
+                ).difference(selectedDate).inDays + 1}',
+            style: textTheme.bodyText1,
+          )
         ],
       ),
     );
@@ -131,24 +122,12 @@ class _BottomPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 340,
       width: double.infinity,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  child: Icon(Icons.star),
-                ),
-                ElevatedButton(
-                    onPressed: (){}, 
-                    child: Text('추가'))
-              ],
-            ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -156,9 +135,17 @@ class _BottomPart extends StatelessWidget {
                 radius: 50,
                 child: Icon(Icons.star),
               ),
-              ElevatedButton(
-                  onPressed: (){},
-                  child: Text('추가'))
+              ElevatedButton(onPressed: () {}, child: Text('추가'))
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CircleAvatar(
+                radius: 50,
+                child: Icon(Icons.star),
+              ),
+              ElevatedButton(onPressed: () {}, child: Text('추가'))
             ],
           ),
         ],
